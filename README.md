@@ -2,17 +2,22 @@
 
 [![npm version](https://badge.fury.io/js/pokemon-tcg-pocket-database.svg#)](https://www.npmjs.com/package/pokemon-tcg-pocket-database)
 
+<p>
+  <img src="./docs/header.png" />
+</p>
+
 > You’re consulting the v2 of this dataset. If you wish to see older version of this README, please refer to the [v1 branch](https://github.com/flibustier/pokemon-tcg-pocket-database/tree/v1). Please refer to the [changelog](https://github.com/flibustier/pokemon-tcg-pocket-database/blob/main/CHANGELOG.md#2.0.0) for the migration guide.
 
 ## Overview
 
 This npm package provides a database of Pokemon Trading Card Game Pocket cards and sets (Pokemon TCG Pocket).
-It includes multiples JSON files: 
+It includes multiples JSON files:
+
 - `cards.json` which contains [basic informations](#cards) about the cards,
 - `cards.extra.json` which contains [detailed informations](#cards-extra) about the cards,
 - `sets.json` which contains all sets grouped by Series (A, B, …),
 - `rarities.json` for informations about [rarity codes](#rarities) and cost,
-- `pullRates.json` for informations with all statistics about the pull rates of the cards. 
+- `pullRates.json` for informations with all statistics about the pull rates of the cards.
 
 Cards are also available as sets separated JSON files in `cards/` folder (e.g. `dist/cards/A1a.json` or `dist/cards/A1a.min.json`).
 
@@ -215,7 +220,7 @@ Here is an example of a set object (`sets.json`):
 }
 ```
 
-### Images 
+### Images
 
 If you’re looking for images, you can find them [here](https://github.com/flibustier/pokemon-tcg-exchange/tree/main/public/images/cards) or in [latest release](https://github.com/flibustier/pokemon-tcg-pocket-database/releases/).
 
