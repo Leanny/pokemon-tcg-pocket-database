@@ -1,12 +1,11 @@
 import fs from "node:fs";
 import * as cheerio from "cheerio";
-import rarityMap from "../dist/rarities.json";
 import existing from "../dist/cards.json";
 
 if (process.argv.length < 3) {
   console.log("Usage: bun ./scripts/scraps.ts [URL] ([packName])");
   console.log(
-    `Example: bun ./scripts/scraps.ts "https://…/b1a" "Crimson Blaze"`
+    `Example: bun ./scripts/scraps.ts "https://…/b1a" "Crimson Blaze"`,
   );
 
   process.exit(1);
@@ -35,8 +34,11 @@ $(".card-grid__cell").each((index, element) => {
   // Extract rarity code from image name
   const rarityCode = imageName.split("_").pop().split(".")[0];
 
+  const [firstLetter, ...rest] = hrefParts[1].split("");
+  const set = firstLetter.toUpperCase() + rest.join("");
+
   const cardData = {
-    set: hrefParts[1].toUpperCase(),
+    set,
     number: parseInt(hrefParts[2]),
     rarity: rarityCode,
     image: imageName,
@@ -45,29 +47,47 @@ $(".card-grid__cell").each((index, element) => {
   };
 
   const existingCard = cards.find(
-    (card) => card.number === cardData.number && card.set === cardData.set
+    (card) => card.number === cardData.number && card.set === cardData.set,
   );
   if (!existingCard) {
     const lastSameSetIndex = cards.findLastIndex(
-      (card) => card.set === cardData.set
+      (card) => card.set === cardData.set,
     );
     if (lastSameSetIndex === -1) {
       cards.push(cardData);
     } else {
       cards.splice(lastSameSetIndex + 1, 0, cardData);
     }
-  } else if (packName) {
+  } else if (
+    packName &&
+    existingCard.packs &&
+    !existingCard.packs.includes(packName)
+  ) {
     existingCard.packs.unshift(packName);
   }
 });
 
+const cardsWithoutImage = cards.map(({ image, ...rest }) => rest);
+
 fs.writeFileSync("./dist/cards.json", JSON.stringify(cards, null, 2));
 fs.writeFileSync("./dist/cards.min.json", JSON.stringify(cards));
+fs.writeFileSync(
+  "./dist/cards.no-image.min.json",
+  JSON.stringify(cardsWithoutImage),
+);
 
 const sets = [...new Set(cards.map(({ set }) => set))];
 
 for (const set of sets) {
   const setCards = cards.filter((card) => card.set === set);
-  fs.writeFileSync(`./dist/cards/${set}.json`, JSON.stringify(setCards, null, 2));
+  const setCardsWithoutImage = setCards.map(({ image, ...rest }) => rest);
+  fs.writeFileSync(
+    `./dist/cards/${set}.json`,
+    JSON.stringify(setCards, null, 2),
+  );
   fs.writeFileSync(`./dist/cards/${set}.min.json`, JSON.stringify(setCards));
+  fs.writeFileSync(
+    `./dist/cards/${set}.no-image.min.json`,
+    JSON.stringify(setCardsWithoutImage),
+  );
 }

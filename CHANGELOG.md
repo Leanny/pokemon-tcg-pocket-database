@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.1.0
+
+Adding `cards.no-image.min.json` which is a reduced (~50%) version of `cards.min.json` without the `image` field.
+
+You can use the directory `cards-by-set` which contains images renamed as predictable names, group by set directory :
+
+```
+cards-by-set/A1/1.webp
+...
+cards-by-set/B2a/23.webp
+```
+
+To calculate the path, you can simply do `cards-by-set/${card.set}/${card.number}.webp`.
+
 ## 2.0.0
 
 Breaking changes!

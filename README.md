@@ -15,6 +15,8 @@ It includes multiples JSON files:
 
 - `cards.json` which contains [basic informations](#cards) about the cards,
 - `cards.extra.json` which contains [detailed informations](#cards-extra) about the cards,
+- `cards.min.json` which contains [basic informations](#cards) about the cards, but minified to save bandwidth (~25% smaller),
+- `cards.no-image.min.json` which contains [basic informations](#cards) about the cards without image name (~50% smaller),
 - `sets.json` which contains all sets grouped by Series (A, B, …),
 - `rarities.json` for informations about [rarity codes](#rarities) and cost,
 - `pullRates.json` for informations with all statistics about the pull rates of the cards.
@@ -39,6 +41,7 @@ Latest version :
 https://raw.githubusercontent.com/flibustier/pokemon-tcg-pocket-database/main/dist/cards.json
 https://raw.githubusercontent.com/flibustier/pokemon-tcg-pocket-database/main/dist/cards.min.json
 https://raw.githubusercontent.com/flibustier/pokemon-tcg-pocket-database/main/dist/cards.extra.json
+https://raw.githubusercontent.com/flibustier/pokemon-tcg-pocket-database/main/dist/cards.no-image.min.json
 https://raw.githubusercontent.com/flibustier/pokemon-tcg-pocket-database/main/dist/sets.json
 https://raw.githubusercontent.com/flibustier/pokemon-tcg-pocket-database/main/dist/rarities.json
 https://raw.githubusercontent.com/flibustier/pokemon-tcg-pocket-database/main/dist/pullRates.json
@@ -48,12 +51,8 @@ For a specific set, like `B1a` :
 
 ```url
 https://raw.githubusercontent.com/flibustier/pokemon-tcg-pocket-database/main/dist/cards/B1a.json
-```
-
-Minified version (save bandwidth) :
-
-```url
 https://raw.githubusercontent.com/flibustier/pokemon-tcg-pocket-database/main/dist/cards/B1a.min.json
+https://raw.githubusercontent.com/flibustier/pokemon-tcg-pocket-database/main/dist/cards/B1a.no-image.min.json
 ```
 
 With a specific version number, like `1.3.0` (see [Releases page](https://github.com/flibustier/pokemon-tcg-pocket-database/releases)) :
@@ -223,6 +222,15 @@ Here is an example of a set object (`sets.json`):
 ### Images
 
 If you’re looking for images, you can find them [here](https://github.com/flibustier/pokemon-tcg-exchange/tree/main/public/images/cards) or in [latest release](https://github.com/flibustier/pokemon-tcg-pocket-database/releases/).
+
+Since 2.1.0, you can also use the directory `cards-by-set` which contains images renamed as predictable names, group by set directory :
+```
+cards-by-set/A1/1.webp
+...
+cards-by-set/B2a/23.webp
+```
+
+To calculate the path, you can simply do `cards-by-set/${card.set}/${card.number}.webp`.
 
 ### Roadmap
 
