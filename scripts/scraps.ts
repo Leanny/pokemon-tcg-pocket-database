@@ -2,70 +2,72 @@ import fs from "node:fs";
 import * as cheerio from "cheerio";
 import existing from "../dist/cards.json";
 
-if (process.argv.length < 3) {
-  console.log("Usage: bun ./scripts/scraps.ts [URL] ([packName])");
-  console.log(
-    `Example: bun ./scripts/scraps.ts "https://…/b1a" "Crimson Blaze"`,
-  );
+console.log("Usage: bun ./scripts/scraps.ts [URL] ([packName])");
+console.log(`Example: bun ./scripts/scraps.ts "https://…/b1a" "Crimson Blaze"`);
 
-  process.exit(1);
-}
-
-const url = process.argv[2] || "";
-const packName = process.argv[3];
-
-console.log(`Scraping URL ${url}...`);
-const response = await fetch(url);
-
-const html = await response.text();
-
-const $ = cheerio.load(html);
 const cards = [...existing];
 
-$(".card-grid__cell").each((index, element) => {
-  const $card = $(element);
-  const hrefParts = $card.find("a").attr("href").split("/").filter(Boolean);
-  const imgSrc = $card.find("img").attr("src");
-  const figcaption = $card.find("figcaption").text().trim();
+if (process.argv.length > 2) {
+  const url = process.argv[2] || "";
+  const packName = process.argv[3];
 
-  // Extract image name from URL
-  const imageName = imgSrc.split("/CardPreviews/")[1].split("?")[0];
+  console.log(`Scraping URL ${url}...`);
+  const response = await fetch(url);
 
-  // Extract rarity code from image name
-  const rarityCode = imageName.split("_").pop().split(".")[0];
+  const html = await response.text();
 
-  const [firstLetter, ...rest] = hrefParts[1].split("");
-  const set = firstLetter.toUpperCase() + rest.join("");
+  const $ = cheerio.load(html);
 
-  const cardData = {
-    set,
-    number: parseInt(hrefParts[2]),
-    rarity: rarityCode,
-    image: imageName,
-    name: figcaption,
-    packs: packName ? [packName] : [],
-  };
+  $(".card-grid__cell").each((index, element) => {
+    const $card = $(element);
+    const hrefParts = $card.find("a").attr("href").split("/").filter(Boolean);
+    const imgSrc = $card.find("img").attr("src");
+    const figcaption = $card.find("figcaption").text().trim();
 
-  const existingCard = cards.find(
-    (card) => card.number === cardData.number && card.set === cardData.set,
-  );
-  if (!existingCard) {
-    const lastSameSetIndex = cards.findLastIndex(
-      (card) => card.set === cardData.set,
-    );
-    if (lastSameSetIndex === -1) {
-      cards.push(cardData);
+    // Extract image name from URL
+    const imageName = imgSrc.split("/CardPreviews/")[1].split("?")[0];
+
+    // Extract rarity code from image name
+    const rarityCode = imageName.split("_").pop().split(".")[0];
+
+    let set = hrefParts[1];
+    if (set.toUpperCase().startsWith("PROMO")) {
+      set = set.toUpperCase();
     } else {
-      cards.splice(lastSameSetIndex + 1, 0, cardData);
+      const [firstLetter, ...rest] = set.split("");
+      set = firstLetter.toUpperCase() + rest.join("");
     }
-  } else if (
-    packName &&
-    existingCard.packs &&
-    !existingCard.packs.includes(packName)
-  ) {
-    existingCard.packs.unshift(packName);
-  }
-});
+
+    const cardData = {
+      set,
+      number: parseInt(hrefParts[2]),
+      rarity: rarityCode,
+      image: imageName,
+      name: figcaption,
+      packs: packName ? [packName] : [],
+    };
+
+    const existingCard = cards.find(
+      (card) => card.number === cardData.number && card.set === cardData.set,
+    );
+    if (!existingCard) {
+      const lastSameSetIndex = cards.findLastIndex(
+        (card) => card.set === cardData.set,
+      );
+      if (lastSameSetIndex === -1) {
+        cards.push(cardData);
+      } else {
+        cards.splice(lastSameSetIndex + 1, 0, cardData);
+      }
+    } else if (
+      packName &&
+      existingCard.packs &&
+      !existingCard.packs.includes(packName)
+    ) {
+      existingCard.packs.unshift(packName);
+    }
+  });
+}
 
 const cardsWithoutImage = cards.map(({ image, ...rest }) => rest);
 

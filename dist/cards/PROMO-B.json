@@ -214,5 +214,79 @@
     "packs": [
       "B Series Vol. 3"
     ]
+  },
+  {
+    "set": "PROMO-B",
+    "number": 25,
+    "rarity": "AR",
+    "image": "cPK_90_011880_00_JIRACHI_AR.webp",
+    "name": "Jirachi",
+    "packs": []
+  },
+  {
+    "set": "PROMO-B",
+    "number": 26,
+    "rarity": "C",
+    "image": "cPK_90_015950_00_MIZUGOROU_C.webp",
+    "name": "Mudkip",
+    "packs": [
+      "B Series Vol. 4"
+    ]
+  },
+  {
+    "set": "PROMO-B",
+    "number": 27,
+    "rarity": "C",
+    "image": "cPK_90_014180_00_PRASLE_C.webp",
+    "name": "Plusle",
+    "packs": [
+      "B Series Vol. 4"
+    ]
+  },
+  {
+    "set": "PROMO-B",
+    "number": 28,
+    "rarity": "C",
+    "image": "cPK_90_015960_00_RALTS_C.webp",
+    "name": "Ralts",
+    "packs": [
+      "B Series Vol. 4"
+    ]
+  },
+  {
+    "set": "PROMO-B",
+    "number": 29,
+    "rarity": "RR",
+    "image": "cPK_90_015970_00_MEGACHAREMex_RR.webp",
+    "name": "Mega Medicham ex",
+    "packs": [
+      "B Series Vol. 4"
+    ]
+  },
+  {
+    "set": "PROMO-B",
+    "number": 30,
+    "rarity": "R",
+    "image": "cPK_90_015040_00_TORNELOS_R.webp",
+    "name": "Tornadus",
+    "packs": [
+      "B Series Vol. 4"
+    ]
+  },
+  {
+    "set": "PROMO-B",
+    "number": 31,
+    "rarity": "R",
+    "image": "cPK_90_013920_00_ACEBURN_R.webp",
+    "name": "Cinderace",
+    "packs": []
+  },
+  {
+    "set": "PROMO-B",
+    "number": 32,
+    "rarity": "R",
+    "image": "cPK_90_013940_00_ALOLAROKON_R.webp",
+    "name": "Alolan Vulpix",
+    "packs": []
   }
 ]

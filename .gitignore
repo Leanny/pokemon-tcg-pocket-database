@@ -7,5 +7,6 @@ scraps.html
 .env
 dist/images/cards
 dist/images/cards-by-set
+dist/images/packs
 dist/images/thumbnails
 dist/*.db
