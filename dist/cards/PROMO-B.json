@@ -96,8 +96,7 @@
     "number": 12,
     "rarity": "AR",
     "image": "cPK_90_013060_00_METAMON_AR.webp",
-    "name": "Ditto",
-    "packs": []
+    "name": "Ditto"
   },
   {
     "set": "PROMO-B",
@@ -154,16 +153,14 @@
     "number": 18,
     "rarity": "R",
     "image": "cPK_90_013030_00_ELEZARD_R.webp",
-    "name": "Heliolisk",
-    "packs": []
+    "name": "Heliolisk"
   },
   {
     "set": "PROMO-B",
     "number": 19,
     "rarity": "R",
     "image": "cPK_90_013040_00_MIMIROL_R.webp",
-    "name": "Buneary",
-    "packs": []
+    "name": "Buneary"
   },
   {
     "set": "PROMO-B",
@@ -220,8 +217,7 @@
     "number": 25,
     "rarity": "AR",
     "image": "cPK_90_011880_00_JIRACHI_AR.webp",
-    "name": "Jirachi",
-    "packs": []
+    "name": "Jirachi"
   },
   {
     "set": "PROMO-B",
@@ -278,15 +274,13 @@
     "number": 31,
     "rarity": "R",
     "image": "cPK_90_013920_00_ACEBURN_R.webp",
-    "name": "Cinderace",
-    "packs": []
+    "name": "Cinderace"
   },
   {
     "set": "PROMO-B",
     "number": 32,
     "rarity": "R",
     "image": "cPK_90_013940_00_ALOLAROKON_R.webp",
-    "name": "Alolan Vulpix",
-    "packs": []
+    "name": "Alolan Vulpix"
   }
 ]

@@ -5,7 +5,10 @@ import existing from "../dist/cards.json";
 console.log("Usage: bun ./scripts/scraps.ts [URL] ([packName])");
 console.log(`Example: bun ./scripts/scraps.ts "https://…/b1a" "Crimson Blaze"`);
 
-const cards = [...existing];
+const cards = existing.map((card) => ({
+  ...card,
+  packs: card.packs?.length > 0 ? card.packs : undefined,
+}));
 
 if (process.argv.length > 2) {
   const url = process.argv[2] || "";
