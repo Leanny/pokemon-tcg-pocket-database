@@ -7,6 +7,7 @@ const IMAGE_DIRECTORY = "../dist/images";
 
 const LANGUAGES = [
   "en_US",
+  /*
   "fr_FR",
   "es_ES",
   "de_DE",
@@ -15,6 +16,7 @@ const LANGUAGES = [
   "ja_JP",
   "ko_KR",
   "zh_TW",
+  */
 ];
 
 interface Card {
