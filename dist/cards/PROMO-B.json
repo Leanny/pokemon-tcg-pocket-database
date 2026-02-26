@@ -282,5 +282,76 @@
     "rarity": "R",
     "image": "cPK_90_013940_00_ALOLAROKON_R.webp",
     "name": "Alolan Vulpix"
+  },
+  {
+    "set": "PROMO-B",
+    "number": 33,
+    "rarity": "AR",
+    "image": "cPK_90_015310_00_KUWASSU_AR.webp",
+    "name": "Quaxly"
+  },
+  {
+    "set": "PROMO-B",
+    "number": 34,
+    "rarity": "C",
+    "image": "cPK_90_015980_00_MINIVE_C.webp",
+    "name": "Smoliv",
+    "packs": [
+      "B Series Vol. 5"
+    ]
+  },
+  {
+    "set": "PROMO-B",
+    "number": 35,
+    "rarity": "AR",
+    "image": "cPK_90_015280_00_CARBOU_AR.webp",
+    "name": "Charcadet",
+    "packs": [
+      "B Series Vol. 5"
+    ]
+  },
+  {
+    "set": "PROMO-B",
+    "number": 36,
+    "rarity": "C",
+    "image": "cPK_90_015420_00_SYARITATSU_C.webp",
+    "name": "Tatsugiri",
+    "packs": [
+      "B Series Vol. 5"
+    ]
+  },
+  {
+    "set": "PROMO-B",
+    "number": 37,
+    "rarity": "C",
+    "image": "cPK_90_015990_00_SEBIE_C.webp",
+    "name": "Frigibax",
+    "packs": [
+      "B Series Vol. 5"
+    ]
+  },
+  {
+    "set": "PROMO-B",
+    "number": 38,
+    "rarity": "R",
+    "image": "cPK_90_015830_00_DEKANUCHAN_R.webp",
+    "name": "Tinkaton",
+    "packs": [
+      "B Series Vol. 5"
+    ]
+  },
+  {
+    "set": "PROMO-B",
+    "number": 39,
+    "rarity": "R",
+    "image": "cPK_90_015470_00_PAMO_R.webp",
+    "name": "Pawmi"
+  },
+  {
+    "set": "PROMO-B",
+    "number": 40,
+    "rarity": "R",
+    "image": "cPK_90_015740_00_PALDEADOOH_R.webp",
+    "name": "Paldean Clodsire"
   }
 ]
